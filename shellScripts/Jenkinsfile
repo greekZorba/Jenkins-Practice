@@ -18,7 +18,8 @@ pipeline {
                 retry(3) {
                     echo 'enter retry'
 
-                    if(false){
+                    def tempFlag = "false"
+                    if(tempFlag != 'false'){
                         dir('shellScripts'){
                             sh 'sudo ./flakey-deploy.sh'
                         }
@@ -28,7 +29,8 @@ pipeline {
                 timeout(time: 3, unit: 'MINUTES') {
                     echo 'enter timeout'
 
-                    if(false){
+                    def tempFlag = "false"
+                    if(tempFlag != 'false'){
                         dir('shellScripts'){
                             sh 'sudo ./health-check.sh'
                         }
