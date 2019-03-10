@@ -29,7 +29,7 @@ pipeline {
                     /* dir('shellScripts'){
                             sh 'sudo ./health-check.sh'
                         } */
-                    }
+
                 }
             }
         }
