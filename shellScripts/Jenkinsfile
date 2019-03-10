@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        # 빌드시
+        // 빌드시
         stage('Build') {
             steps {
                 sh 'echo "Hello World"'
@@ -11,10 +11,10 @@ pipeline {
                 '''
             }
         }
-        # 배포시
+        // 배포시
         stage('Deploy') {
             steps {
-                # 3번 시도해봄
+                // 3번 시도함
                 retry(3) {
                     echo 'enter retry'
 
@@ -24,7 +24,7 @@ pipeline {
                     }
                     fi
                 }
-                # 3분 단위로 타임아웃 체크 
+                // 3분 단위로 타임아웃 체크
                 timeout(time: 3, unit: 'MINUTES') {
                     echo 'enter timeout'
 
