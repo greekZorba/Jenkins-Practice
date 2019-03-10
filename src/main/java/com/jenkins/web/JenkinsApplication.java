@@ -1,4 +1,4 @@
-package com.jenkins.demo;
+package com.jenkins.web;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
