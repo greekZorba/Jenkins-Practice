@@ -13,15 +13,23 @@ pipeline {
         stage('Deploy') {
             steps {
                 retry(3) {
+                    echo 'enter retry'
+
+                    if false; then
                     dir('shellScripts'){
                         sh 'sudo ./flakey-deploy.sh'
                     }
+                    fi
                 }
 
                 timeout(time: 3, unit: 'MINUTES') {
+                    echo 'enter timeout'
+
+                    if false; then
                     dir('shellScripts'){
                         sh 'sudo ./health-check.sh'
                     }
+                    fi
                 }
             }
         }
