@@ -18,22 +18,17 @@ pipeline {
                 retry(3) {
                     echo 'enter retry'
 
-                    def tempFlag = "false"
-                    if(tempFlag != 'false'){
-                        dir('shellScripts'){
+                    /* dir('shellScripts'){
                             sh 'sudo ./flakey-deploy.sh'
-                        }
-                    }
+                    } */
                 }
                 // 3분 단위로 타임아웃 체크
                 timeout(time: 3, unit: 'MINUTES') {
                     echo 'enter timeout'
 
-                    def tempFlag = "false"
-                    if(tempFlag != 'false'){
-                        dir('shellScripts'){
+                    /* dir('shellScripts'){
                             sh 'sudo ./health-check.sh'
-                        }
+                        } */
                     }
                 }
             }
