@@ -14,13 +14,13 @@ pipeline {
             steps {
                 retry(3) {
                     dir('shellScripts'){
-                        sh './flakey-deploy.sh'
+                        sh 'sudo ./flakey-deploy.sh'
                     }
                 }
 
                 timeout(time: 3, unit: 'MINUTES') {
                     dir('shellScripts'){
-                        sh './health-check.sh'
+                        sh 'sudo ./health-check.sh'
                     }
                 }
             }
