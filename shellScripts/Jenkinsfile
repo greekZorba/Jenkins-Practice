@@ -15,23 +15,29 @@ pipeline {
         stage('Deploy') {
             steps {
                 // 3번 시도함
-                retry(3) {
+               /* retry(3) {
                     echo 'enter retry'
 
                     /* dir('shellScripts'){
                             sh 'sudo ./flakey-deploy.sh'
                     } */
-                }
-                // 3분 단위로 타임아웃 체크
-                timeout(time: 3, unit: 'MINUTES') {
+                }*/
+                // 3분이 지나면 timeout
+                /* timeout(time: 3, unit: 'MINUTES') {
                     echo 'enter timeout'
 
                     /* dir('shellScripts'){
                             sh 'sudo ./health-check.sh'
                         } */
 
+                } */
+                timeout(time: 3, unit: 'MINUTES') {
+                    retry(5) {
+                        echo 'timeout and retry test'
+                    }
                 }
-            }
-        }
+
+            } // steps end
+        } // stage end
     }
 }
