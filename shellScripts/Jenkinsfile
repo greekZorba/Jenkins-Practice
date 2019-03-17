@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'maven: 3.3.3'}}
+    agent any
     stages {
         // 빌드시
         stage('Build') {
@@ -41,10 +41,28 @@ pipeline {
             }
         }
 
-       /* stage('Test') {
+        stage('Test') {
             steps {
-                sh 'echo "Fail '
+                sh 'echo "Fail!"; exit 1'
             }
-        } */
+        }
     } // stages end
+    post {
+        always {
+            echo 'This will always run'
+        }
+        success {
+            echo 'this will run only if success'
+        }
+        failure {
+            echo 'this will run only if fail'
+        }
+        unstable {
+            echo 'this will run only if the run was marked as unstable'
+        }
+        changed {
+            echo 'this will run only if the state of the Pipeline has changed'
+            echo 'For example, if the Pipeline was previously failing but is now successful'
+        }
+    } // post end
 } // pipeline end
