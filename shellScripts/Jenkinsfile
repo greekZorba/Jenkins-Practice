@@ -22,7 +22,7 @@ pipeline {
                             sh 'sudo ./flakey-deploy.sh'
                     } */
                 } */
-                /* 3분 지나면 timeout */
+
                 /* timeout(time: 3, unit: 'MINUTES') {
                     echo 'enter timeout'
 
@@ -39,5 +39,5 @@ pipeline {
 
             } // steps end
         } // stage end
-    }
-}
+    } // stages end
+} // pipeline end
